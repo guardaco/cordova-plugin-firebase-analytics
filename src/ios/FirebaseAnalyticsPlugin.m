@@ -2,6 +2,7 @@
 
 @import Firebase;
 
+static NSString*const LOG_TAG = @"Firebase Analytics plugin";
 
 @implementation FirebaseAnalyticsPlugin
 
