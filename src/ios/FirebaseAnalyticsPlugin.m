@@ -115,4 +115,17 @@ static NSString*const LOG_TAG = @"Firebase Analytics plugin";
     [self executeGlobalJavascript:jsString];
 }
 
+- (NSString*)escapeJavascriptString: (NSString*)str
+{
+    NSString* result = [str stringByReplacingOccurrencesOfString: @"\\\"" withString: @"\""];
+    result = [result stringByReplacingOccurrencesOfString: @"\"" withString: @"\\\""];
+    result = [result stringByReplacingOccurrencesOfString: @"\n" withString: @"\\\n"];
+    return result;
+}
+
+- (void)executeGlobalJavascript: (NSString*)jsString
+{
+    [self.commandDelegate evalJs:jsString];
+}
+
 @end
