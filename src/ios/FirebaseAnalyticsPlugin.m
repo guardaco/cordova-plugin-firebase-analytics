@@ -9,6 +9,24 @@
     NSLog(@"Starting Firebase Analytics plugin");
 
     if(![FIRApp defaultApp]) {
+        // get GoogleService-Info.plist file path
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"GoogleService-Info" ofType:@"plist"];
+        // if file is successfully found, use it
+        if(filePath){
+            [FirebasePlugin.firebasePlugin _logMessage:@"GoogleService-Info.plist found, setup: [FIRApp configureWithOptions]"];
+            // create firebase configure options passing .plist as content
+            FIROptions *options = [[FIROptions alloc] initWithContentsOfFile:filePath];
+
+            // configure FIRApp with options
+            [FIRApp configureWithOptions:options];
+            
+            isFirebaseInitializedWithPlist = true;
+        } else {
+            // no .plist found, try default App
+            [FirebasePlugin.firebasePlugin _logError:@"GoogleService-Info.plist NOT FOUND, setup: [FIRApp defaultApp]"];
+            [FIRApp configure];
+        }
+    } else {
         [FIRApp configure];
     }
 }
