@@ -20,7 +20,6 @@
             // configure FIRApp with options
             [FIRApp configureWithOptions:options];
             
-            isFirebaseInitializedWithPlist = true;
         } else {
             // no .plist found, try default App
             [self _logError:@"GoogleService-Info.plist NOT FOUND, setup: [FIRApp defaultApp]"];
