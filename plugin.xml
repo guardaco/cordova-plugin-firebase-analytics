@@ -7,8 +7,8 @@ xmlns:android="http://schemas.android.com/apk/res/android"
     <description>Cordova plugin for Firebase Analytics</description>
     <license>MIT</license>
     <keywords>cordova</keywords>
-    <repo>https://github.com/chemerisuk/cordova-plugin-firebase-analytics</repo>
-    <issue>https://github.com/chemerisuk/cordova-plugin-firebase-analytics/issues</issue>
+    <repo>https://github.com/guardaco/cordova-plugin-firebase-analytics</repo>
+    <issue>https://github.com/guardaco/cordova-plugin-firebase-analytics/issues</issue>
 
     <js-module src="www/FirebaseAnalytics.js" name="FirebaseAnalytics">
         <merges target="cordova.plugins.firebase.analytics" />
@@ -89,5 +89,6 @@ xmlns:android="http://schemas.android.com/apk/res/android"
         <source-file src="src/android/FirebaseAnalyticsPlugin.java"
             target-dir="src/by/chemerisuk/cordova/firebase/" />
     </platform>
+    <hook type="after_plugin_install" src="scripts/after_plugin_install.js" />
 
 </plugin>
